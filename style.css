@@ -1,16 +1,30 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: "Montserrat", sans-serif;
+}
+
+body {
+    background-color: #0f0f1e;
+    color: #fff;
+    font-size: 16px;
+    overflow-x: hidden;
+}
+
 .item {
     display: none;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     position: absolute;
     top: 0;
     left: 0;
     overflow: hidden;
     background-color: var(--background);
-
 }
 
-.item.active{
+.item.active {
     display: block;
 }
 
@@ -25,7 +39,7 @@
     top: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
-
+    white-space: nowrap;
 }
 
 .item .fruit {
@@ -33,20 +47,15 @@
     position: absolute;
     top: 0;
     z-index: 1;
-    
-    
 }
 
 .item .refri {
     width: 600px;
     position: absolute;
-    z-index: 2;
+    z-index: 3;
     left: 35%;
     top: 10%;
-    transform: translate(-50%, -50%);
     animation: float 3s ease-in-out infinite;
-
-    
 }
 
 #prev, #next {
@@ -58,20 +67,15 @@
     background-color: #eee9;
     border: #eee9;
     color: #eee;
-    font-size:x-large;
+    font-size: x-large;
     font-family: monospace;
     cursor: pointer;
-    z-index: 4;
+    z-index: 10;
     border-radius: 50%;
 }
 
-#prev {
-    left: 30px;
-}
-
-#next {
-    right: 30px;
-}
+#prev { left: 30px; }
+#next { right: 30px; }
 
 @keyframes toActive {
     from {
@@ -80,10 +84,7 @@
     }
 }
 
-.item.active img.fruit {
-    animation: toActive 0.5s ease-in-out 1;
-}
-
+.item.active img.fruit,
 .item.active .tittle {
     animation: toActive 0.5s ease-in-out 1;
 }
@@ -100,79 +101,57 @@
     transform: translateX(-50%);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-style: italic; 
-
+    z-index: 4;
 }
+
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-.gota{
-  
-
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
 }
 
 .fumaca {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  mix-blend-mode: screen; 
-  opacity: 0.55;          
-  pointer-events: none;   
-  z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    mix-blend-mode: screen; 
+    opacity: 0.55;          
+    pointer-events: none;   
+    z-index: 1;
 }
 
+/* ================= REGRA DO CELULAR ================= */
 @media screen and (max-width: 768px) {
-    /* Libera a rolagem para evitar cortes no celular */
-    body {
-        overflow-x: hidden;
-        overflow-y: auto;
-    }
-
-    /* Reduz o título gigante ("Strawb...") para não estourar a tela */
     .item .tittle {
-        font-size: 14vw; /* Encolhe proporcionalmente com a largura da tela */
+        font-size: 11vw !important; /* Ajusta o tamanho do texto para caber na tela */
+        top: 40% !important;
         width: 100%;
-        top: 45%;
-        padding: 0 10px;
     }
 
-    /* Reduz a lata de refri e centraliza */
     .item .refri {
-        width: 260px;
-        left: 50%;
-        top: 25%;
-        transform: translate(-50%, 0);
+        width: 250px !important; /* Reduz a lata */
+        left: 50% !important; /* Centraliza a lata */
+        margin-left: -125px; /* Compensa a metade da largura para alinhar ao centro */
+        top: 20% !important;
     }
 
-    /* Ajusta a descrição superior para caber em telas pequenas */
     .descricao {
-        font-size: 1rem;
-        width: 90%;
-        max-width: 100%;
-        top: 20px;
-        line-height: 1.4;
+        font-size: 0.95rem !important;
+        width: 85% !important;
+        top: 25px !important;
     }
 
-    /* Diminui e reposiciona os botões de navegação */
     #prev, #next {
-        width: 40px;
-        height: 40px;
-        font-size: medium;
+        width: 40px !important;
+        height: 40px !important;
     }
 
-    #prev {
-        left: 10px;
-    }
-
-    #next {
-        right: 10px;
-    }
+    #prev { left: 10px !important; }
+    #next { right: 10px !important; }
 }
