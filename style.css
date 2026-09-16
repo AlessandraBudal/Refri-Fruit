@@ -128,3 +128,51 @@
   pointer-events: none;   
   z-index: 1;
 }
+
+@media screen and (max-width: 768px) {
+    /* Libera a rolagem para evitar cortes no celular */
+    body {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    /* Reduz o título gigante ("Strawb...") para não estourar a tela */
+    .item .tittle {
+        font-size: 14vw; /* Encolhe proporcionalmente com a largura da tela */
+        width: 100%;
+        top: 45%;
+        padding: 0 10px;
+    }
+
+    /* Reduz a lata de refri e centraliza */
+    .item .refri {
+        width: 260px;
+        left: 50%;
+        top: 25%;
+        transform: translate(-50%, 0);
+    }
+
+    /* Ajusta a descrição superior para caber em telas pequenas */
+    .descricao {
+        font-size: 1rem;
+        width: 90%;
+        max-width: 100%;
+        top: 20px;
+        line-height: 1.4;
+    }
+
+    /* Diminui e reposiciona os botões de navegação */
+    #prev, #next {
+        width: 40px;
+        height: 40px;
+        font-size: medium;
+    }
+
+    #prev {
+        left: 10px;
+    }
+
+    #next {
+        right: 10px;
+    }
+}
